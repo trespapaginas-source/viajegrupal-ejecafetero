@@ -14,11 +14,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            green: '#10b981', /* Verde esmeralda moderno y sutil */
-                            dark: '#064e3b',
-                            light: '#f0fdf4', /* Fondo verde/blanco muy claro */
-                            accent: '#10b981', /* CTAs en verde sutil */
-                            accentHover: '#059669'
+                            cyan: '#0e7490', /* Cian oscuro principal (sustituye al verde) */
+                            dark: '#164e63', /* Cian muy oscuro (casi azul marino) */
+                            light: '#ecfeff', /* Fondo cian muy claro */
+                            accent: '#06b6d4', /* Cian brillante para botones y resplandores */
+                            accentHover: '#0891b2' /* Hover de botones */
                         }
                     },
                     animation: {
@@ -92,7 +92,7 @@
         .btn-luxury {
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.4);
             transition: all 0.3s ease;
             border: 1px solid rgba(255,255,255,0.2);
         }
@@ -117,7 +117,7 @@
             z-index: 0;
         }
         .btn-luxury:hover::after { transform: scale(1); }
-        .btn-luxury:active { transform: scale(0.97); box-shadow: 0 5px 10px rgba(16, 185, 129, 0.3); }
+        .btn-luxury:active { transform: scale(0.97); box-shadow: 0 5px 10px rgba(6, 182, 212, 0.3); }
         .btn-luxury span, .btn-luxury i { relative; z-index: 2; }
 
         @keyframes luxuryShine {
@@ -137,19 +137,19 @@
             
             <h1 class="hero-animate-up delay-100 text-4xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight drop-shadow-lg">
                 Viaja al Eje Cafetero <br> 
-                <span class="text-brand-green bg-clip-text text-transparent bg-gradient-to-r from-brand-green to-emerald-300">del 12 al 18 de mayo</span>
+                <span class="text-brand-cyan bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-cyan-200">del 12 al 18 de mayo</span>
             </h1>
             
             <p class="hero-animate-up delay-200 mt-4 text-xl md:text-2xl text-gray-100 mb-4 max-w-2xl mx-auto drop-shadow-md font-medium">
                 7 días / 6 noches <br> Asegura tu lugar con $200.000 COP por persona
             </p>
             
-            <p class="hero-animate-up delay-300 text-lg text-emerald-100 mb-10 max-w-2xl mx-auto font-medium">
-                <i class="fas fa-calendar-check mr-2"></i> Cupos limitados
+            <p class="hero-animate-up delay-300 text-lg text-cyan-100 mb-10 max-w-2xl mx-auto font-medium">
+                <i class="fas fa-shield-alt mr-2"></i> Cupos limitados. Facilidades de pago disponibles para que viajes sin preocupaciones.
             </p>
             
             <div class="hero-animate-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button onclick="scrollToPricing()" class="btn-luxury w-full sm:w-auto bg-brand-green text-white font-bold text-lg py-4 px-10 rounded-full flex items-center justify-center">
+                <button onclick="scrollToPricing()" class="btn-luxury w-full sm:w-auto bg-brand-cyan text-white font-bold text-lg py-4 px-10 rounded-full flex items-center justify-center">
                     <span>Quiero reservar mi cupo</span>
                 </button>
             </div>
@@ -165,7 +165,7 @@
         </div>
     </section>
 
-    <section class="pb-20 bg-white overflow-hidden relative group">
+    <section class="pb-20 bg-gradient-to-b from-white to-brand-light/50 overflow-hidden relative group">
         <div class="max-w-[100vw] mx-auto px-2 md:px-6">
             <div id="carouselTrack" class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth pb-8 pt-4 px-4">
                 <div class="reveal fade-right delay-100 snap-center shrink-0 w-[85vw] md:w-[420px] h-[320px] relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 group-hover:shadow-xl transition-shadow">
@@ -200,8 +200,8 @@
                 </div>
             </div>
             <div class="flex justify-center gap-4 mt-2 reveal fade-up">
-                <button onclick="scrollCarousel(-1)" class="w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-green hover:border-brand-green hover:shadow-md transition-all"><i class="fas fa-chevron-left text-lg"></i></button>
-                <button onclick="scrollCarousel(1)" class="w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-green hover:border-brand-green hover:shadow-md transition-all"><i class="fas fa-chevron-right text-lg"></i></button>
+                <button onclick="scrollCarousel(-1)" class="w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-left text-lg"></i></button>
+                <button onclick="scrollCarousel(1)" class="w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-right text-lg"></i></button>
             </div>
         </div>
     </section>
@@ -220,15 +220,15 @@
                     <div class="mb-3 reveal fade-up">
                         <button onclick="toggleAccordion('day1')" class="w-full flex justify-between items-center bg-white hover:bg-brand-light border border-gray-100 shadow-sm py-5 px-6 rounded-2xl text-left font-bold text-gray-800 transition-all">
                             <span>Día 1 — 12 de mayo (Llegada)</span>
-                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day1" class="fas fa-minus text-brand-green"></i></div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day1" class="fas fa-minus text-brand-cyan"></i></div>
                         </button>
                         <div id="content-day1" class="px-2 pt-6 pb-6 transition-all">
                             <div class="flex flex-col md:flex-row gap-6 items-start bg-white p-6 rounded-2xl shadow-sm border border-gray-50">
                                 <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=500&q=80" alt="Viaje y Llegada" class="w-full md:w-[280px] h-[220px] object-cover rounded-xl shadow-inner shrink-0">
                                 <div class="w-full pt-2">
                                     <div class="text-gray-600 space-y-3 text-[16px] leading-relaxed font-medium">
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-3"></i> Salida desde Barranquilla en transporte terrestre ida y vuelta en bus.</p>
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-3"></i> Llegada, registro y acomodación en el Hotel campestre.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Salida desde Barranquilla en transporte terrestre ida y vuelta en bus.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Llegada, registro y acomodación en el Hotel campestre.</p>
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +237,7 @@
                     
                     <div class="mb-3 reveal fade-up">
                         <button onclick="toggleAccordion('day2')" class="w-full flex justify-between items-center bg-white hover:bg-brand-light border border-gray-100 shadow-sm py-5 px-6 rounded-2xl text-left font-bold text-gray-800 transition-all">
-                            <span>Día 2 — 13 de mayo</span>
+                            <span>Día 2</span>
                             <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day2" class="fas fa-plus text-gray-400"></i></div>
                         </button>
                         <div id="content-day2" class="hidden px-2 pt-6 pb-6 transition-all">
@@ -245,7 +245,7 @@
                                 <img src="https://i.ibb.co/nMckFsgw/PARQUE-DEL-CAFE.jpg" alt="Parque del Café" class="w-full md:w-[280px] h-[220px] object-cover rounded-xl shadow-inner shrink-0">
                                 <div class="w-full pt-2">
                                     <div class="text-gray-600 space-y-3 text-[16px] leading-relaxed font-medium">
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-3"></i> Visita al Parque del Café.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Visita al Parque del Café.</p>
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +254,7 @@
 
                     <div class="mb-3 reveal fade-up">
                         <button onclick="toggleAccordion('day3')" class="w-full flex justify-between items-center bg-white hover:bg-brand-light border border-gray-100 shadow-sm py-5 px-6 rounded-2xl text-left font-bold text-gray-800 transition-all">
-                            <span>Día 3 — 14 de mayo</span>
+                            <span>Día 3</span>
                             <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day3" class="fas fa-plus text-gray-400"></i></div>
                         </button>
                         <div id="content-day3" class="hidden px-2 pt-6 pb-6 transition-all">
@@ -262,7 +262,7 @@
                                 <img src="https://i.ibb.co/VcTqBbqw/PARQUE-RECCUA.jpg" alt="Parque Recuca" class="w-full md:w-[280px] h-[220px] object-cover rounded-xl shadow-inner shrink-0">
                                 <div class="w-full pt-2">
                                     <div class="text-gray-600 space-y-3 text-[16px] leading-relaxed font-medium">
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-3"></i> Visita al Parque Recuca.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Visita al Parque Recuca.</p>
                                     </div>
                                 </div>
                             </div>
@@ -271,7 +271,7 @@
 
                     <div class="mb-3 reveal fade-up">
                         <button onclick="toggleAccordion('day4')" class="w-full flex justify-between items-center bg-white hover:bg-brand-light border border-gray-100 shadow-sm py-5 px-6 rounded-2xl text-left font-bold text-gray-800 transition-all">
-                            <span>Día 4 — 15 de mayo</span>
+                            <span>Día 4</span>
                             <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day4" class="fas fa-plus text-gray-400"></i></div>
                         </button>
                         <div id="content-day4" class="hidden px-2 pt-6 pb-6 transition-all">
@@ -279,7 +279,7 @@
                                 <img src="https://i.ibb.co/Vc6w9cFR/SALENTO-Y-FILANDIA.jpg" alt="Salento y Filandia" class="w-full md:w-[280px] h-[220px] object-cover rounded-xl shadow-inner shrink-0">
                                 <div class="w-full pt-2">
                                     <div class="text-gray-600 space-y-3 text-[16px] leading-relaxed font-medium">
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-3"></i> Recorrido por Salento y Filandia.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Recorrido por Salento y Filandia.</p>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +288,7 @@
 
                     <div class="mb-3 reveal fade-up">
                         <button onclick="toggleAccordion('day5')" class="w-full flex justify-between items-center bg-white hover:bg-brand-light border border-gray-100 shadow-sm py-5 px-6 rounded-2xl text-left font-bold text-gray-800 transition-all">
-                            <span>Día 5 — 16 de mayo</span>
+                            <span>Día 5</span>
                             <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day5" class="fas fa-plus text-gray-400"></i></div>
                         </button>
                         <div id="content-day5" class="hidden px-2 pt-6 pb-6 transition-all">
@@ -296,7 +296,7 @@
                                 <img src="https://i.ibb.co/RkPKqn6W/VALLE-DEL-COCORA.jpg" alt="Valle del Cocora" class="w-full md:w-[280px] h-[220px] object-cover rounded-xl shadow-inner shrink-0">
                                 <div class="w-full pt-2">
                                     <div class="text-gray-600 space-y-3 text-[16px] leading-relaxed font-medium">
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-3"></i> Visita al Valle del Cocora.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Visita al Valle del Cocora.</p>
                                     </div>
                                 </div>
                             </div>
@@ -305,7 +305,7 @@
 
                     <div class="mb-3 reveal fade-up">
                         <button onclick="toggleAccordion('day6')" class="w-full flex justify-between items-center bg-white hover:bg-brand-light border border-gray-100 shadow-sm py-5 px-6 rounded-2xl text-left font-bold text-gray-800 transition-all">
-                            <span>Día 6 — 17 de mayo</span>
+                            <span>Día 6</span>
                             <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day6" class="fas fa-plus text-gray-400"></i></div>
                         </button>
                         <div id="content-day6" class="hidden px-2 pt-6 pb-6 transition-all">
@@ -313,7 +313,7 @@
                                 <img src="https://i.ibb.co/cXSCdCHm/TERMALES.jpg" alt="Termales de Santa Rosa" class="w-full md:w-[280px] h-[220px] object-cover rounded-xl shadow-inner shrink-0">
                                 <div class="w-full pt-2">
                                     <div class="text-gray-600 space-y-3 text-[16px] leading-relaxed font-medium">
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-3"></i> Relajación en Termales de Santa Rosa.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Relajación en Termales de Santa Rosa.</p>
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +330,7 @@
                                 <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=500&q=80" alt="Regreso a Barranquilla" class="w-full md:w-[280px] h-[220px] object-cover rounded-xl shadow-inner shrink-0">
                                 <div class="w-full pt-2">
                                     <div class="text-gray-600 space-y-3 text-[16px] leading-relaxed font-medium">
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-3"></i> Regreso a Barranquilla en transporte terrestre.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Regreso a Barranquilla en transporte terrestre.</p>
                                     </div>
                                 </div>
                             </div>
@@ -339,23 +339,23 @@
 
                     <div class="mt-6 p-5 bg-white rounded-xl border border-gray-100 shadow-sm reveal fade-up">
                         <p class="text-sm text-gray-500 font-medium mb-2 flex items-start">
-                            <i class="fas fa-info-circle text-brand-green mt-0.5 mr-2"></i> El anterior itinerario es sugerido, puede tener variaciones por condiciones logísticas o climáticas.
+                            <i class="fas fa-info-circle text-brand-cyan mt-0.5 mr-2"></i> El anterior itinerario es sugerido, puede tener variaciones por condiciones logísticas o climáticas.
                         </p>
                         <p class="text-sm text-gray-500 font-medium flex items-start">
-                            <i class="fas fa-info-circle text-brand-green mt-0.5 mr-2"></i> El ingreso al Valle del Cocora y Salento están sujetos a aforo por medidas gubernamentales.
+                            <i class="fas fa-info-circle text-brand-cyan mt-0.5 mr-2"></i> El ingreso al Valle del Cocora y Salento están sujetos a aforo por medidas gubernamentales.
                         </p>
                     </div>
                 </div>
 
                 <div class="lg:col-span-5 mt-12 lg:mt-0 flex flex-col gap-6 lg:sticky lg:top-10 reveal fade-left">
-                    <div class="p-8 bg-brand-light/60 border border-brand-green/20 rounded-3xl shadow-sm">
-                        <h3 class="text-2xl font-extrabold mb-6 text-brand-dark flex items-center"><i class="fas fa-check-circle text-brand-green text-3xl mr-3"></i> Sí Incluye</h3>
+                    <div class="p-8 bg-brand-light/60 border border-brand-cyan/20 rounded-3xl shadow-sm">
+                        <h3 class="text-2xl font-extrabold mb-6 text-brand-dark flex items-center"><i class="fas fa-check-circle text-brand-cyan text-3xl mr-3"></i> Sí Incluye</h3>
                         <ul class="space-y-4 text-gray-700 font-medium">
-                            <li class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> Transporte terrestre ida y vuelta en bus (Desde Barranquilla).</li>
-                            <li class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> Alojamiento en Hotel Campestre.</li>
-                            <li class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> 4 desayunos y 3 cenas.</li>
-                            <li class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> Guía turístico experto acompañante.</li>
-                            <li class="flex items-start"><i class="fas fa-check text-brand-green mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> Seguro de asistencia médica.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> Transporte terrestre ida y vuelta en bus (Desde Barranquilla).</li>
+                            <li class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> Alojamiento en Hotel Campestre.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> 4 desayunos y 3 cenas.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> Guía turístico experto acompañante.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-4 bg-white p-1 rounded-full shadow-sm"></i> Seguro de asistencia médica.</li>
                         </ul>
                     </div>
                     
@@ -373,6 +373,96 @@
         </div>
     </section>
 
+    <section class="py-20 bg-white px-4 sm:px-6 lg:px-8 border-t border-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center mb-12 reveal fade-down">
+                <h2 class="text-3xl font-extrabold text-brand-dark">Tu hospedaje en el Eje Cafetero</h2>
+                <p class="text-gray-500 mt-3 font-medium max-w-3xl mx-auto text-lg">Durante el viaje nos hospedaremos en <strong class="text-brand-cyan">La Victoria Hotel Campestre</strong>, un lugar rodeado de naturaleza en Filandia, Quindío, ideal para descansar después de cada día de experiencias.</p>
+            </div>
+
+            <div class="mb-14 relative group">
+                <div id="hotelCarouselTrack" class="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth pb-6 pt-2 px-2 cursor-grab active:cursor-grabbing">
+                    <div class="reveal fade-up snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/tTFvvcys/fachada-1.jpg" alt="Hotel Foto 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up delay-100 snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/j9TT7M7z/Save-Clip-App-626708194-18120631477571680-6446293681005084048-n.jpg" alt="Hotel Foto 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up delay-200 snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/d3fFgHC/fachada-2.jpg" alt="Hotel Foto 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up delay-300 snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/cSNPWJrd/0be34844-5b9b-4d29-a6f3-52238241a63a.jpg" alt="Hotel Foto 4" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up delay-400 snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/v45LHTvh/02ee222d-83df-4b9d-bb93-fe605416c173.jpg" alt="Hotel Foto 5" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/Jj14zmHQ/3dce76cd-15c9-4925-b3cb-d6f1fb81f33a.jpg" alt="Hotel Foto 6" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/ks3CTSLK/5f1be086-961b-493f-bbf1-2d0e60814c56.jpg" alt="Hotel Foto 7" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/7dPjdWSB/piscina-2.jpg" alt="Hotel Foto 8" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/jkxk1YRq/habitaciones.jpg" alt="Hotel Foto 9" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/VWLQXPr9/0322a6a4-c61b-459d-86e7-2b212ace06f3.jpg" alt="Hotel Foto 10" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                    <div class="reveal fade-up snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
+                        <img src="https://i.ibb.co/cKV15b2s/Save-Clip-App-618089019-18070220972147997-1530941264181902851-n.jpg" alt="Hotel Foto 10" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4 mt-2 reveal fade-up">
+                    <button onclick="scrollHotelCarousel(-1)" class="w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-left text-lg"></i></button>
+                    <button onclick="scrollHotelCarousel(1)" class="w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-right text-lg"></i></button>
+                </div>
+            </div>
+
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-stretch">
+                <div class="lg:col-span-6 flex flex-col gap-6 reveal fade-right delay-200">
+                    <div class="bg-brand-light/50 border border-brand-cyan/20 p-8 rounded-3xl shadow-sm flex-grow flex flex-col justify-center">
+                        <ul class="space-y-6 text-gray-700 font-medium">
+                            <li class="flex items-center"><div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-xl"><i class="fas fa-leaf"></i></div> Hotel campestre rodeado de naturaleza</li>
+                            <li class="flex items-center"><div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-xl"><i class="fas fa-swimming-pool"></i></div> Piscina y jacuzzi para relajarte</li>
+                            <li class="flex items-center"><div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-xl"><i class="fas fa-utensils"></i></div> Restaurante dentro del hotel</li>
+                            <li class="flex items-center"><div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-xl"><i class="fas fa-map-marker-alt"></i></div> Ubicación estratégica en Filandia, Quindío</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-orange-50 border-l-4 border-orange-400 p-6 rounded-r-2xl shadow-sm">
+                        <p class="text-sm text-gray-700 font-medium leading-relaxed flex items-start">
+                            <i class="fas fa-info-circle text-orange-500 mt-1 mr-3 text-lg shrink-0"></i>
+                            <span><strong>Aclaración importante:</strong> Las habitaciones durante este viaje grupal serán compartidas entre viajeros del grupo, creando un ambiente social y de comunidad durante la experiencia.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 mt-10 lg:mt-0 flex flex-col gap-6 reveal fade-left delay-300">
+                    <div class="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm flex-grow flex flex-col">
+                        <h3 class="text-xl font-extrabold text-brand-dark mb-6 text-center">Conoce el lugar donde descansaremos</h3>
+                        
+                        <div class="w-full max-w-[320px] mx-auto relative rounded-2xl overflow-hidden shadow-inner bg-gray-900 mb-6 aspect-[9/16]">
+                            <video class="absolute top-0 left-0 w-full h-full object-cover" controls playsinline preload="metadata">
+                                <source src="video prom.mp4" type="video/mp4">
+                                Tu navegador no soporta la etiqueta de video.
+                            </video>
+                        </div>
+
+                        <div class="mt-auto text-center px-4 py-5 bg-gray-50 rounded-2xl border border-gray-100">
+                            <p class="text-gray-600 italic font-medium">"Después de cada día explorando el Eje Cafetero, este será el lugar perfecto para relajarte, compartir con el grupo y disfrutar del entorno natural."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section class="py-20 bg-gray-50 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="tarifas">
         <div class="max-w-7xl mx-auto">
             <div class="text-center lg:text-left mb-14 reveal fade-down">
@@ -383,8 +473,8 @@
             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
                 
                 <div class="w-full lg:w-5/12 flex flex-col items-center lg:items-start reveal fade-up delay-200">
-                    <div class="bg-white rounded-3xl shadow-2xl border-t-8 border-brand-green max-w-lg w-full flex flex-col relative z-10" id="mainCard">
-                        <div class="absolute top-0 right-0 bg-brand-green text-white px-5 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-bold uppercase tracking-wider shadow-md">
+                    <div class="bg-white rounded-3xl shadow-2xl border-t-8 border-brand-cyan max-w-lg w-full flex flex-col relative z-10" id="mainCard">
+                        <div class="absolute top-0 right-0 bg-brand-cyan text-white px-5 py-2 rounded-bl-2xl rounded-tr-2xl text-sm font-bold uppercase tracking-wider shadow-md">
                             Salida Confirmada
                         </div>
                         <div class="p-10 text-center mt-6">
@@ -394,10 +484,10 @@
                         
                         <div class="px-10 pb-10">
                             <div class="bg-brand-light/50 p-5 rounded-2xl mb-8 border border-brand-light/80">
-                                <h4 class="font-bold text-brand-dark mb-3 flex items-center"><i class="fas fa-wallet text-brand-green mr-2 text-xl"></i> Facilidades de pago</h4>
+                                <h4 class="font-bold text-brand-dark mb-3 flex items-center"><i class="fas fa-wallet text-brand-cyan mr-2 text-xl"></i> Facilidades de pago</h4>
                                 <ul class="text-gray-700 space-y-3 text-[15px] font-medium">
-                                    <li class="flex items-start"><i class="fas fa-circle text-[8px] text-brand-green mt-2 mr-3"></i> <span>Reserva con solo <strong class="text-brand-dark"> $200.000 COP</strong> (depósito).</span></li>
-                                    <li class="flex items-start"><i class="fas fa-circle text-[8px] text-brand-green mt-2 mr-3"></i> <span>Paga el resto cómodamente hasta 10 días antes del viaje.</span></li>
+                                    <li class="flex items-start"><i class="fas fa-circle text-[8px] text-brand-cyan mt-2 mr-3"></i> <span>Reserva con solo <strong class="text-brand-dark"> $200.000 COP</strong> (depósito).</span></li>
+                                    <li class="flex items-start"><i class="fas fa-circle text-[8px] text-brand-cyan mt-2 mr-3"></i> <span>Paga el resto cómodamente hasta 10 días antes del viaje.</span></li>
                                 </ul>
                             </div>
 
@@ -413,7 +503,7 @@
                     </div>
                     
                     <div class="text-center lg:text-left mt-8 w-full max-w-lg text-sm font-medium text-gray-400 flex items-center justify-center lg:justify-start reveal fade-up">
-                        <i class="fas fa-shield-alt mr-2 text-brand-green text-lg"></i> Tu reserva se procesa de forma segura a través de nuestra plataforma.
+                        <i class="fas fa-shield-alt mr-2 text-brand-cyan text-lg"></i> Tu reserva se procesa de forma segura a través de nuestra plataforma.
                     </div>
                 </div>
 
@@ -422,7 +512,7 @@
                         <img src="https://i.ibb.co/Vc6w9cFR/SALENTO-Y-FILANDIA.jpg" alt="Eje Cafetero Premium" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
                             <span class="text-white font-black text-3xl drop-shadow-lg tracking-wide">Una experiencia a otro nivel</span>
-                            <span class="text-brand-green font-bold text-lg mt-2 flex items-center"><i class="fas fa-check-circle mr-2"></i> Cupos limitados</span>
+                            <span class="text-brand-cyan font-bold text-lg mt-2 flex items-center"><i class="fas fa-check-circle mr-2"></i> Cupos limitados</span>
                         </div>
                     </div>
 
@@ -430,8 +520,8 @@
                         <h3 class="text-2xl font-extrabold text-brand-dark border-b border-gray-100 pb-4">¿Por qué viajar con Rutas Viajeras?</h3>
                         
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center shrink-0 border border-brand-green/20">
-                                <i class="fas fa-star text-brand-green text-xl"></i>
+                            <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center shrink-0 border border-brand-cyan/20">
+                                <i class="fas fa-star text-brand-cyan text-xl"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-gray-800 text-lg">Respaldo de Expertos</h4>
@@ -440,8 +530,8 @@
                         </div>
 
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center shrink-0 border border-brand-green/20">
-                                <i class="fas fa-lock text-brand-green text-xl"></i>
+                            <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center shrink-0 border border-brand-cyan/20">
+                                <i class="fas fa-lock text-brand-cyan text-xl"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-gray-800 text-lg">Reserva 100% Segura</h4>
@@ -450,8 +540,8 @@
                         </div>
 
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center shrink-0 border border-brand-green/20">
-                                <i class="fas fa-users text-brand-green text-xl"></i>
+                            <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center shrink-0 border border-brand-cyan/20">
+                                <i class="fas fa-users text-brand-cyan text-xl"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-gray-800 text-lg">Comunidad de Viajeros</h4>
@@ -475,28 +565,28 @@
                     <img src="https://images.unsplash.com/photo-1518182170546-076616fdcbdd?auto=format&fit=crop&w=600&q=80" alt="Amazonas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
                         <span class="text-white font-extrabold text-2xl drop-shadow-md tracking-wide">Amazonas</span>
-                        <span class="text-emerald-300 font-medium text-sm mt-1"><i class="fas fa-map-marker-alt mr-1"></i> Expedición Selva</span>
+                        <span class="text-cyan-300 font-medium text-sm mt-1"><i class="fas fa-map-marker-alt mr-1"></i> Expedición Selva</span>
                     </div>
                 </div>
                 <div class="reveal fade-up delay-200 relative h-72 rounded-3xl overflow-hidden shadow-lg group cursor-default">
                     <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=600&q=80" alt="Tolú" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
                         <span class="text-white font-extrabold text-2xl drop-shadow-md tracking-wide">Tolú y Coveñas</span>
-                        <span class="text-emerald-300 font-medium text-sm mt-1"><i class="fas fa-map-marker-alt mr-1"></i> Mar y Descanso</span>
+                        <span class="text-cyan-300 font-medium text-sm mt-1"><i class="fas fa-map-marker-alt mr-1"></i> Mar y Descanso</span>
                     </div>
                 </div>
                 <div class="reveal fade-up delay-300 relative h-72 rounded-3xl overflow-hidden shadow-lg group cursor-default">
                     <img src="https://images.unsplash.com/photo-1621510486820-e18e0018b14a?auto=format&fit=crop&w=600&q=80" alt="Guatapé" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
                         <span class="text-white font-extrabold text-2xl drop-shadow-md tracking-wide">Guatapé</span>
-                        <span class="text-emerald-300 font-medium text-sm mt-1"><i class="fas fa-map-marker-alt mr-1"></i> Antioquia Mágica</span>
+                        <span class="text-cyan-300 font-medium text-sm mt-1"><i class="fas fa-map-marker-alt mr-1"></i> Antioquia Mágica</span>
                     </div>
                 </div>
                 <div class="reveal fade-up delay-400 relative h-72 rounded-3xl overflow-hidden shadow-lg group cursor-default">
                     <img src="https://images.unsplash.com/photo-1582239462228-3e47d48858e7?auto=format&fit=crop&w=600&q=80" alt="Desierto de la Tatacoa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
                         <span class="text-white font-extrabold text-2xl drop-shadow-md tracking-wide">La Tatacoa</span>
-                        <span class="text-emerald-300 font-medium text-sm mt-1"><i class="fas fa-map-marker-alt mr-1"></i> Noches de Estrellas</span>
+                        <span class="text-cyan-300 font-medium text-sm mt-1"><i class="fas fa-map-marker-alt mr-1"></i> Noches de Estrellas</span>
                     </div>
                 </div>
             </div>
@@ -509,7 +599,7 @@
             <h2 class="text-4xl md:text-5xl font-black mb-6 text-brand-dark tracking-tight leading-tight">Prepárate para vivir paisajes y experiencias que recordarás siempre.</h2>
             <p class="text-xl text-gray-600 mb-10 font-medium">Asegura tu lugar y vive esta experiencia inolvidable junto a otros viajeros.</p>
             
-            <button onclick="scrollToPricingAndOpen()" class="btn-luxury w-full sm:w-auto bg-brand-green text-white font-bold text-xl py-5 px-14 rounded-full transition-transform transform hover:scale-105">
+            <button onclick="scrollToPricingAndOpen()" class="btn-luxury w-full sm:w-auto bg-brand-cyan text-white font-bold text-xl py-5 px-14 rounded-full transition-transform transform hover:scale-105">
                 <span>Quiero reservar mi cupo</span>
             </button>
         </div>
@@ -518,32 +608,32 @@
     <footer class="bg-white text-gray-600 py-16 px-4 border-t border-gray-200 reveal fade-up">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div class="md:col-span-1">
-                <h3 class="text-brand-dark text-2xl font-black mb-4"><span class="text-brand-green">Rutas</span> Viajeras</h3>
+                <h3 class="text-brand-dark text-2xl font-black mb-4"><span class="text-brand-cyan">Rutas</span> Viajeras</h3>
                 <p class="text-sm text-gray-500 leading-relaxed mb-6 font-medium">
                     Especialistas en crear experiencias inolvidables por toda Colombia, respaldados por Luisito El Viajero.
                 </p>
                 <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-white transition shadow-sm"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-white transition shadow-sm"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-white transition shadow-sm"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-cyan hover:bg-brand-cyan hover:text-white transition shadow-sm"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-cyan hover:bg-brand-cyan hover:text-white transition shadow-sm"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-cyan hover:bg-brand-cyan hover:text-white transition shadow-sm"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             
             <div>
                 <h4 class="text-gray-800 font-bold mb-4 uppercase text-sm tracking-wider">Enlaces Rápidos</h4>
                 <ul class="space-y-3 text-sm font-medium">
-                    <li><a href="#" onclick="scrollToPricing()" class="hover:text-brand-green transition">Ver Itinerario Eje Cafetero</a></li>
-                    <li><a href="#" onclick="scrollToPricingAndOpen()" class="hover:text-brand-green transition">Reservar Cupo</a></li>
-                    <li><a href="#" class="hover:text-brand-green transition">Preguntas Frecuentes</a></li>
+                    <li><a href="#" onclick="scrollToPricing()" class="hover:text-brand-cyan transition">Ver Itinerario Eje Cafetero</a></li>
+                    <li><a href="#" onclick="scrollToPricingAndOpen()" class="hover:text-brand-cyan transition">Reservar Cupo</a></li>
+                    <li><a href="#" class="hover:text-brand-cyan transition">Preguntas Frecuentes</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="text-gray-800 font-bold mb-4 uppercase text-sm tracking-wider">Legal</h4>
                 <ul class="space-y-3 text-sm font-medium">
-                    <li><a href="#" onclick="openPrivacyModal(event)" class="hover:text-brand-green transition">Política de Datos y Privacidad</a></li>
-                    <li><a href="#" class="hover:text-brand-green transition">Términos y Condiciones</a></li>
-                    <li><a href="#" class="hover:text-brand-green transition">Políticas de Cancelación</a></li>
+                    <li><a href="#" onclick="openPrivacyModal(event)" class="hover:text-brand-cyan transition">Política de Datos y Privacidad</a></li>
+                    <li><a href="#" class="hover:text-brand-cyan transition">Términos y Condiciones</a></li>
+                    <li><a href="#" class="hover:text-brand-cyan transition">Políticas de Cancelación</a></li>
                 </ul>
             </div>
 
@@ -551,16 +641,16 @@
                 <h4 class="text-gray-800 font-bold mb-4 uppercase text-sm tracking-wider">Contacto Seguro</h4>
                 <ul class="space-y-3 text-sm font-medium">
                     <li class="flex items-start group cursor-default">
-                        <i class="fab fa-whatsapp mt-1 mr-3 text-brand-green text-lg group-hover:scale-110 transition"></i>
+                        <i class="fab fa-whatsapp mt-1 mr-3 text-brand-cyan text-lg group-hover:scale-110 transition"></i>
                         <span>Asesoría directa vía WhatsApp</span>
                     </li>
                     <li class="flex items-start group cursor-default">
-                        <i class="fas fa-envelope mt-1 mr-3 text-brand-green text-lg group-hover:scale-110 transition"></i>
+                        <i class="fas fa-envelope mt-1 mr-3 text-brand-cyan text-lg group-hover:scale-110 transition"></i>
                         <span>reservas@rutasviajeras.com</span>
                     </li>
                     <li class="flex items-start group cursor-default">
-                        <i class="fas fa-shield-alt mt-1 mr-3 text-brand-green text-lg group-hover:scale-110 transition"></i>
-                        <span>Registro Nacional de Turismo: #278488</span>
+                        <i class="fas fa-shield-alt mt-1 mr-3 text-brand-cyan text-lg group-hover:scale-110 transition"></i>
+                        <span>Registro Nacional de Turismo: #12345</span>
                     </li>
                 </ul>
             </div>
@@ -574,9 +664,9 @@
     <div class="fixed bottom-0 left-0 right-0 bg-white p-4 sticky-cta md:hidden z-40 flex justify-between items-center" id="stickyCta">
         <div class="text-left">
             <p class="font-black text-brand-dark leading-tight text-lg">$1.800.000 <span class="text-xs text-gray-400">COP</span></p>
-            <p class="text-[11px] text-brand-green font-bold uppercase tracking-wide">Asegura con $200k</p>
+            <p class="text-[11px] text-brand-cyan font-bold uppercase tracking-wide">Asegura con $200k</p>
         </div>
-        <button onclick="scrollToPricingAndOpen()" class="btn-luxury bg-brand-green text-white font-bold py-3 px-6 rounded-full text-sm shadow-md">
+        <button onclick="scrollToPricingAndOpen()" class="btn-luxury bg-brand-cyan text-white font-bold py-3 px-6 rounded-full text-sm shadow-md">
             <span>Reservar Cupo</span>
         </button>
     </div>
@@ -598,16 +688,26 @@
                 <p>Tus datos son tratados de manera segura y encriptada (hashed data) cuando se sincronizan con terceros. Tienes derecho a conocer, actualizar, rectificar o solicitar la eliminación de tus datos en cualquier momento comunicándote a nuestros canales oficiales.</p>
             </div>
             <div class="p-5 border-t border-gray-100 bg-gray-50 text-right">
-                <button onclick="closePrivacyModal()" class="bg-brand-green hover:bg-brand-dark text-white font-bold py-3 px-8 rounded-xl transition shadow-sm">Entendido</button>
+                <button onclick="closePrivacyModal()" class="bg-brand-cyan hover:bg-brand-dark text-white font-bold py-3 px-8 rounded-xl transition shadow-sm">Entendido</button>
             </div>
         </div>
     </div>
 
     <script>
-        // --- CONFIG: reemplazar con la URL del Web App de Google Apps Script ---
-        const APP_ENDPOINT_URL = "REEMPLAZAR_AQUI";
-        // número de Whatsapp (sin +), ejemplo: 57300XXXXXXX
-        const CONTACT_WHATSAPP = "REEMPLAZAR_AQUI"; 
+        // =======================================================================
+        // SISTEMA DE SEGURIDAD Y OFUSCACIÓN (Antispam y Anti-scrapers)
+        // =======================================================================
+        
+        // 1. Divide tu Número de WhatsApp en 3 o 4 pedazos. 
+        const _waParts = ['INGRESA_', 'TU_NUMERO_', 'AQUI_EN_', 'PEDAZOS']; 
+        
+        // 2. Divide tu URL de Google Script en 3 o 4 pedazos.
+        const _urlParts = ['INGRESA_', 'TU_URL_', 'AQUI_EN_', 'PEDAZOS']; 
+        
+        // Funciones que arman los datos solo cuando se necesitan
+        function getWa() { return _waParts.join(''); }
+        function getUrl() { return _urlParts.join(''); }
+
         const DEPOSIT_PRICE = 200000;
         
         let bookingState = {
@@ -615,7 +715,8 @@
             step: 1,
             numSpots: 1,
             passengers: [], 
-            currentPassengerIndex: 1
+            currentPassengerIndex: 1,
+            isBot: false // <-- Bandera de seguridad (Honeypot)
         };
 
         let timerInterval = null;
@@ -630,9 +731,10 @@
         window.onload = function() {
             checkActiveRetention();
             initCarouselAutoScroll();
+            initHotelCarouselAutoScroll(); // INICIA EL BUCLE DEL HOTEL
         }
 
-        // --- LÓGICA DEL CARRUSEL ---
+        // --- LÓGICA DEL CARRUSEL DE EXPERIENCIAS ---
         let carouselIntervalId;
         
         function initCarouselAutoScroll() {
@@ -653,7 +755,7 @@
         function scrollCarousel(direction) {
             if (!carouselTrack) return;
             const firstImg = carouselTrack.children[0];
-            const scrollAmount = firstImg.clientWidth + 24; // ancho + gap
+            const scrollAmount = firstImg.clientWidth + 24; 
             
             if (direction === 1) {
                 if (carouselTrack.scrollLeft + carouselTrack.clientWidth >= carouselTrack.scrollWidth - 10) {
@@ -666,6 +768,49 @@
                     carouselTrack.scrollTo({ left: carouselTrack.scrollWidth, behavior: 'smooth' });
                 } else {
                     carouselTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                }
+            }
+        }
+
+        // --- LÓGICA DEL CARRUSEL DE HOTEL (BUCLE INFINITO) ---
+        let hotelCarouselIntervalId;
+
+        function initHotelCarouselAutoScroll() {
+            startHotelCarouselTimer();
+            const track = document.getElementById('hotelCarouselTrack');
+            if(track) {
+                track.addEventListener('mouseenter', () => clearInterval(hotelCarouselIntervalId));
+                track.addEventListener('mouseleave', startHotelCarouselTimer);
+                track.addEventListener('touchstart', () => clearInterval(hotelCarouselIntervalId), {passive: true});
+                track.addEventListener('touchend', startHotelCarouselTimer, {passive: true});
+            }
+        }
+
+        function startHotelCarouselTimer() {
+            clearInterval(hotelCarouselIntervalId);
+            hotelCarouselIntervalId = setInterval(() => {
+                scrollHotelCarousel(1);
+            }, 3500); // 3.5 segundos para que no choque visualmente con el otro
+        }
+
+        function scrollHotelCarousel(direction) {
+            const track = document.getElementById('hotelCarouselTrack');
+            if (!track) return;
+            const firstImg = track.children[0];
+            const scrollAmount = firstImg.clientWidth + 16; 
+            
+            if (direction === 1) {
+                // Bucle infinito: Si llega al final, vuelve suavemente al inicio
+                if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+                    track.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            } else {
+                if (track.scrollLeft <= 0) {
+                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 }
             }
         }
@@ -698,10 +843,10 @@
             if (content.classList.contains('hidden')) {
                 content.classList.remove('hidden');
                 icon.classList.remove('fa-plus', 'text-gray-400');
-                icon.classList.add('fa-minus', 'text-brand-green');
+                icon.classList.add('fa-minus', 'text-brand-cyan');
             } else {
                 content.classList.add('hidden');
-                icon.classList.remove('fa-minus', 'text-brand-green');
+                icon.classList.remove('fa-minus', 'text-brand-cyan');
                 icon.classList.add('fa-plus', 'text-gray-400');
             }
         }
@@ -719,6 +864,7 @@
                     bookingState.numSpots = 1;
                     bookingState.passengers = [];
                     bookingState.currentPassengerIndex = 1;
+                    bookingState.isBot = false;
                 }
                 bookingContainer.classList.add('open');
                 btnStartBooking.classList.add('hidden');
@@ -747,12 +893,12 @@
                         <button type="button" onclick="updateSpots(1)" class="bg-gray-50 hover:bg-gray-100 text-gray-800 font-bold py-4 px-6 text-xl transition">+</button>
                     </div>
                     
-                    <div class="bg-brand-light/40 p-5 rounded-xl mb-8 border border-brand-green/20 text-center">
+                    <div class="bg-brand-light/40 p-5 rounded-xl mb-8 border border-brand-cyan/20 text-center">
                         <p class="text-sm text-gray-500 mb-2 font-medium">Subtotal depósito:</p>
                         <p class="text-2xl font-black text-brand-dark tracking-tight" id="depositTotal">200.000 COP x ${bookingState.numSpots} = ${formatCurrency(DEPOSIT_PRICE * bookingState.numSpots)}</p>
                     </div>
 
-                    <button onclick="goToStep2()" class="w-full bg-brand-green hover:bg-brand-dark text-white font-bold py-4 px-4 rounded-xl transition-colors shadow-md text-lg">
+                    <button onclick="goToStep2()" class="w-full bg-brand-cyan hover:bg-brand-dark text-white font-bold py-4 px-4 rounded-xl transition-colors shadow-md text-lg">
                         Siguiente paso
                     </button>
                 `;
@@ -763,35 +909,38 @@
                 bookingBody.innerHTML = `
                     <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
                         <h3 class="font-extrabold text-xl text-brand-dark">Datos del pasajero ${bookingState.currentPassengerIndex}</h3>
-                        <span class="text-xs text-brand-green bg-brand-light px-3 py-1.5 rounded-full font-bold">Pasajero ${bookingState.currentPassengerIndex} de ${bookingState.numSpots}</span>
+                        <span class="text-xs text-brand-cyan bg-brand-light px-3 py-1.5 rounded-full font-bold">Pasajero ${bookingState.currentPassengerIndex} de ${bookingState.numSpots}</span>
                     </div>
 
                     <form id="passengerForm" onsubmit="savePassenger(event)">
+                        
+                        <input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off" style="position: absolute; opacity: 0; left: -9999px;">
+
                         <div class="mb-5">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="p_name">Nombre completo *</label>
-                            <input type="text" id="p_name" required value="${existingData.name}" class="appearance-none border border-gray-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition" placeholder="Ej. Juan Pérez" oninput="this.value = this.value.replace(/[^a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]/g, '')">
+                            <input type="text" id="p_name" required value="${existingData.name}" class="appearance-none border border-gray-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition" placeholder="Ej. Juan Pérez" oninput="this.value = this.value.replace(/[^a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]/g, '')">
                         </div>
                         
                         <div class="mb-5">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="p_email">Correo electrónico *</label>
-                            <input type="email" id="p_email" required value="${existingData.email}" class="appearance-none border border-gray-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition" placeholder="ejemplo@correo.com">
+                            <input type="email" id="p_email" required value="${existingData.email}" class="appearance-none border border-gray-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition" placeholder="ejemplo@correo.com">
                         </div>
 
                         <div class="mb-6">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="p_phone">Número celular *</label>
-                            <input type="tel" id="p_phone" required pattern="[0-9]{10,15}" title="Ingresa un número válido, solo dígitos." value="${existingData.phone}" class="appearance-none border border-gray-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition" placeholder="3001234567" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <input type="tel" id="p_phone" required pattern="[0-9]{10,15}" title="Ingresa un número válido, solo dígitos." value="${existingData.phone}" class="appearance-none border border-gray-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition" placeholder="3001234567" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                         </div>
 
                         <div class="mb-8 flex items-start bg-gray-50 p-4 rounded-xl border border-gray-100">
-                            <input type="checkbox" id="p_terms" required class="mt-1 mr-3 cursor-pointer w-5 h-5 accent-brand-green rounded">
+                            <input type="checkbox" id="p_terms" required class="mt-1 mr-3 cursor-pointer w-5 h-5 accent-brand-cyan rounded">
                             <label for="p_terms" class="text-sm text-gray-600 cursor-pointer font-medium">
-                                Acepto el tratamiento de mis <a href="#" onclick="openPrivacyModal(event)" class="text-brand-green font-bold underline hover:text-brand-dark transition">datos personales</a>.
+                                Acepto el tratamiento de mis <a href="#" onclick="openPrivacyModal(event)" class="text-brand-cyan font-bold underline hover:text-brand-dark transition">datos personales</a>.
                             </label>
                         </div>
 
                         <div class="flex gap-3 mt-4">
                             <button type="button" onclick="goBackFromStep2()" class="w-1/3 bg-white border border-gray-200 hover:bg-gray-50 text-gray-600 font-bold py-4 px-4 rounded-xl transition">Atrás</button>
-                            <button type="submit" class="w-2/3 bg-brand-green hover:bg-brand-dark text-white font-bold py-4 px-4 rounded-xl transition shadow-md">
+                            <button type="submit" class="w-2/3 bg-brand-cyan hover:bg-brand-dark text-white font-bold py-4 px-4 rounded-xl transition shadow-md">
                                 ${bookingState.currentPassengerIndex < bookingState.numSpots ? 'Siguiente pasajero' : 'Confirmar'}
                             </button>
                         </div>
@@ -820,7 +969,7 @@
                             <p class="text-xs text-gray-400 uppercase tracking-wide mb-2 font-medium">Pasajeros</p>
                             <ul class="text-sm text-gray-700 font-medium">${passengersHtml}</ul>
                         </div>
-                        <div class="bg-white p-4 rounded-xl border border-brand-green/30 text-center">
+                        <div class="bg-white p-4 rounded-xl border border-brand-cyan/30 text-center">
                             <p class="text-xs text-gray-500 uppercase tracking-wider mb-1 font-bold">Subtotal a depositar</p>
                             <p class="text-2xl font-black text-brand-dark">${formatCurrency(total)}</p>
                         </div>
@@ -844,8 +993,8 @@
             else if (bookingState.step === 4) {
                 bookingBody.innerHTML = `
                     <div class="text-center pb-2">
-                        <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-4 border border-brand-green/20">
-                            <i class="fas fa-check text-2xl text-brand-green"></i>
+                        <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-4 border border-brand-cyan/20">
+                            <i class="fas fa-check text-2xl text-brand-cyan"></i>
                         </div>
                         <h3 class="font-extrabold text-2xl text-brand-dark mb-3">¡Casi listo!</h3>
                         <p class="text-sm text-gray-600 mb-6 font-medium">Tienes 1 hora para realizar el depósito. Si necesitas más tiempo, indícanoslo en el chat.</p>
@@ -856,7 +1005,7 @@
                         </div>
                         
                         <div class="bg-gray-50 border border-gray-200 p-5 rounded-2xl text-sm text-gray-600 text-left shadow-inner">
-                            <p class="mb-3 font-bold text-gray-800"><i class="fas fa-info-circle text-brand-green mr-2"></i> ¿No se abrió WhatsApp?</p>
+                            <p class="mb-3 font-bold text-gray-800"><i class="fas fa-info-circle text-brand-cyan mr-2"></i> ¿No se abrió WhatsApp?</p>
                             <p class="mb-5 font-medium leading-relaxed">Tu retención sigue activa. Para completar la reserva, vuelve a hacer clic en el botón de abajo y envía el mensaje.</p>
                             <button onclick="reopenWhatsApp()" class="w-full border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-bold py-3 px-4 rounded-xl transition flex justify-center items-center text-lg">
                                 <i class="fab fa-whatsapp mr-2"></i> Abrir WhatsApp
@@ -888,6 +1037,17 @@
             btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Procesando...';
             btn.disabled = true;
 
+            // --- DEFENSA CONTRA BOTS ---
+            if (bookingState.isBot) {
+                setTimeout(() => {
+                    let expiryTime = Date.now() + (60 * 60 * 1000);
+                    localStorage.setItem('retentionExpiry', expiryTime);
+                    bookingState.step = 4;
+                    renderStep();
+                }, 1500);
+                return; 
+            }
+
             const buyer = bookingState.passengers[0];
             const pasajerosNombres = bookingState.passengers.map(p => p.name);
             const subtotal = DEPOSIT_PRICE * bookingState.numSpots;
@@ -906,7 +1066,8 @@
             };
 
             try {
-                const response = await fetch(APP_ENDPOINT_URL, {
+                // USAMOS getUrl() OFUSCADO
+                const response = await fetch(getUrl(), {
                     method: 'POST',
                     body: JSON.stringify(payload),
                     headers: { 'Content-Type': 'text/plain;charset=utf-8' }
@@ -949,12 +1110,14 @@
                 document.getElementById('depositTotal').innerText = `200.000 COP x ${newSpots} = ${formatCurrency(DEPOSIT_PRICE * newSpots)}`;
             }
         }
+
         function goToStep2() {
             bookingState.step = 2;
             bookingState.currentPassengerIndex = 1;
             bookingState.passengers = bookingState.passengers.slice(0, bookingState.numSpots);
             renderStep();
         }
+
         function goBackFromStep2() {
             if (bookingState.currentPassengerIndex > 1) {
                 bookingState.currentPassengerIndex--;
@@ -964,8 +1127,16 @@
                 renderStep();
             }
         }
+
         function savePassenger(e) {
             e.preventDefault();
+            
+            // VERIFICACIÓN DEL HONEYPOT
+            const hp = document.getElementById('hp_website');
+            if (hp && hp.value !== '') {
+                bookingState.isBot = true;
+            }
+
             const name = document.getElementById('p_name').value;
             const email = document.getElementById('p_email').value;
             const phone = document.getElementById('p_phone').value;
@@ -1001,7 +1172,8 @@
         }
 
         function reopenWhatsApp() {
-            const waUrl = `https://wa.me/${CONTACT_WHATSAPP}?text=${generateWhatsAppText()}`;
+            // USAMOS getWa() OFUSCADO
+            const waUrl = `https://wa.me/${getWa()}?text=${generateWhatsAppText()}`;
             window.open(waUrl, '_blank');
         }
 
@@ -1087,7 +1259,3 @@
     </script>
 </body>
 </html>
-
-
-
-
