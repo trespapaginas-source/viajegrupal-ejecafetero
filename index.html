@@ -447,7 +447,7 @@
                         <h3 class="text-xl font-extrabold text-brand-dark mb-6 text-center">Conoce el lugar donde descansaremos</h3>
                         
                         <div class="w-full max-w-[320px] mx-auto relative rounded-2xl overflow-hidden shadow-inner bg-gray-900 mb-6 aspect-[9/16]">
-                            <video class="absolute top-0 left-0 w-full h-full object-cover" controls playsinline preload="metadata">
+                            <video class="absolute top-0 left-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="https://i.ibb.co/tTFvvcys/fachada-1.jpg">
                                 <source src="video prom.mp4#t=0.011" type="video/mp4">
                                 Tu navegador no soporta la etiqueta de video.
                             </video>
@@ -738,9 +738,10 @@
             initCarousels(); // Inicializa AMBOS carruseles con bucle infinito y lightbox
         }
 
-        // --- LÓGICA DE CARRUSELES (BUCLE INFINITO REAL Y LIGHTBOX) ---
+        // --- LÓGICA DE CARRUSELES (BUCLE INFINITO REAL Y LIGHTBOX MÓVIL) ---
         let carouselIntervalId;
         let hotelCarouselIntervalId;
+        window.isDraggingCarousel = false; // Variable para saber si desliza o toca
         
         function initCarousels() {
             setupInfiniteTrack('carouselTrack');
@@ -751,12 +752,13 @@
 
             // Hacer que TODAS las fotos de los carruseles se puedan abrir (Lightbox)
             document.querySelectorAll('#carouselTrack img, #hotelCarouselTrack img').forEach(img => {
-                img.classList.remove('pointer-events-none'); // Activamos clics
-                img.draggable = false; // Evitamos que al arrastrar en PC descargue la foto
+                img.classList.remove('pointer-events-none'); 
+                img.draggable = false; // Evita que descargue la foto en PC
                 img.classList.add('cursor-pointer');
                 
-                // Evento click al contenedor de la imagen
+                // Evento click con protección contra arrastre
                 img.closest('div').onclick = function() {
+                    if (window.isDraggingCarousel) return; // Si estaba arrastrando, ignora el clic
                     openLightbox(img.src);
                 };
             });
@@ -766,26 +768,32 @@
             const track = document.getElementById(trackId);
             if (!track) return;
 
-            // Clonar los elementos para crear el efecto de "bucle infinito" sin devolver la cámara
             const items = Array.from(track.children);
+            
+            // Clonar elementos para crear el bucle infinito
             items.forEach(item => {
                 const clone = item.cloneNode(true);
+                // SOLUCIÓN AL ESPACIO EN BLANCO: Le quitamos la clase de animación a los clones
+                clone.classList.remove('reveal', 'fade-up', 'fade-right', 'fade-left', 'active');
+                clone.style.opacity = '1';
+                clone.style.transform = 'translate(0,0)';
                 track.appendChild(clone);
             });
 
-            // Función mágica que reinicia la posición secretamente cuando llegas al final
+            // Detectar el arrastre en celular para no abrir fotos por error
+            track.addEventListener('touchmove', () => { window.isDraggingCarousel = true; }, {passive: true});
+            track.addEventListener('touchend', () => { setTimeout(() => window.isDraggingCarousel = false, 150); }, {passive: true});
+
+            // Salto invisible cuando llega al final (Bucle infinito hacia adelante)
             track.addEventListener('scroll', () => {
-                const maxScroll = track.scrollWidth / 2; // La mitad exacta
+                const maxScroll = track.scrollWidth / 2; // La mitad exacta del carrusel
+                
                 if (track.scrollLeft >= maxScroll) {
-                    track.classList.remove('scroll-smooth');
-                    track.scrollLeft -= maxScroll;
-                    void track.offsetWidth; // Forzar renderizado
-                    track.classList.add('scroll-smooth');
-                } else if (track.scrollLeft <= 0) {
-                    track.classList.remove('scroll-smooth');
-                    track.scrollLeft += maxScroll;
-                    void track.offsetWidth; 
-                    track.classList.add('scroll-smooth');
+                    // Desactiva el snap y el smooth temporalmente para que el salto no se note
+                    track.classList.remove('scroll-smooth', 'snap-x');
+                    track.scrollLeft -= maxScroll; // Teletransporte al inicio
+                    void track.offsetWidth; // Fuerza al navegador a registrar el cambio
+                    track.classList.add('scroll-smooth', 'snap-x'); // Reactiva el movimiento suave
                 }
             }, { passive: true });
 
@@ -814,7 +822,7 @@
             hotelCarouselIntervalId = setInterval(() => scrollHotelCarousel(1), 3500); 
         }
 
-        // Funciones conectadas a los botones de flecha de la landing
+        // Controles de flechas manuales
         function scrollCarousel(direction) {
             const track = document.getElementById('carouselTrack');
             if (!track) return;
@@ -836,7 +844,7 @@
             img.src = src;
             modal.classList.remove('hidden');
             
-            // Pausar carruseles para que no se muevan de fondo
+            // Pausar carruseles para que no se sigan moviendo de fondo
             clearInterval(carouselIntervalId);
             clearInterval(hotelCarouselIntervalId);
 
