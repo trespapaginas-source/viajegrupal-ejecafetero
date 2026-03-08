@@ -118,7 +118,7 @@
         }
         .btn-luxury:hover::after { transform: scale(1); }
         .btn-luxury:active { transform: scale(0.97); box-shadow: 0 5px 10px rgba(6, 182, 212, 0.3); }
-        .btn-luxury span, .btn-luxury i { relative; z-index: 2; }
+        .btn-luxury span, .btn-luxury i { position: relative; z-index: 2; }
 
         @keyframes luxuryShine {
             0% { left: -150%; }
@@ -448,7 +448,7 @@
                         
                         <div class="w-full max-w-[320px] mx-auto relative rounded-2xl overflow-hidden shadow-inner bg-gray-900 mb-6 aspect-[9/16]">
                             <video class="absolute top-0 left-0 w-full h-full object-cover" controls playsinline preload="metadata">
-                                <source src="video prom.mp4" type="video/mp4">
+                                <source src="video prom.mp4#t=0.011" type="video/mp4">
                                 Tu navegador no soporta la etiqueta de video.
                             </video>
                         </div>
@@ -671,6 +671,11 @@
         </button>
     </div>
 
+    <div id="lightboxModal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeLightbox(event)">
+        <button class="absolute top-6 right-6 text-white hover:text-brand-cyan text-4xl z-[110] transition-colors">&times;</button>
+        <img id="lightboxImage" src="" class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+    </div>
+
     <div id="privacyModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden relative max-h-[85vh] flex flex-col fade-in border border-gray-100">
             <div class="bg-brand-dark p-5 flex justify-between items-center text-white">
@@ -730,89 +735,132 @@
         // Inicialización al cargar la página
         window.onload = function() {
             checkActiveRetention();
-            initCarouselAutoScroll();
-            initHotelCarouselAutoScroll(); // INICIA EL BUCLE DEL HOTEL
+            initCarousels(); // Inicializa AMBOS carruseles con bucle infinito y lightbox
         }
 
-        // --- LÓGICA DEL CARRUSEL DE EXPERIENCIAS ---
+        // --- LÓGICA DE CARRUSELES (BUCLE INFINITO REAL Y LIGHTBOX) ---
         let carouselIntervalId;
+        let hotelCarouselIntervalId;
         
-        function initCarouselAutoScroll() {
+        function initCarousels() {
+            setupInfiniteTrack('carouselTrack');
+            setupInfiniteTrack('hotelCarouselTrack');
+            
             startCarouselTimer();
-            carouselTrack.addEventListener('mouseenter', () => clearInterval(carouselIntervalId));
-            carouselTrack.addEventListener('mouseleave', startCarouselTimer);
-            carouselTrack.addEventListener('touchstart', () => clearInterval(carouselIntervalId), {passive: true});
-            carouselTrack.addEventListener('touchend', startCarouselTimer, {passive: true});
+            startHotelCarouselTimer();
+
+            // Hacer que TODAS las fotos de los carruseles se puedan abrir (Lightbox)
+            document.querySelectorAll('#carouselTrack img, #hotelCarouselTrack img').forEach(img => {
+                img.classList.remove('pointer-events-none'); // Activamos clics
+                img.draggable = false; // Evitamos que al arrastrar en PC descargue la foto
+                img.classList.add('cursor-pointer');
+                
+                // Evento click al contenedor de la imagen
+                img.closest('div').onclick = function() {
+                    openLightbox(img.src);
+                };
+            });
+        }
+
+        function setupInfiniteTrack(trackId) {
+            const track = document.getElementById(trackId);
+            if (!track) return;
+
+            // Clonar los elementos para crear el efecto de "bucle infinito" sin devolver la cámara
+            const items = Array.from(track.children);
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                track.appendChild(clone);
+            });
+
+            // Función mágica que reinicia la posición secretamente cuando llegas al final
+            track.addEventListener('scroll', () => {
+                const maxScroll = track.scrollWidth / 2; // La mitad exacta
+                if (track.scrollLeft >= maxScroll) {
+                    track.classList.remove('scroll-smooth');
+                    track.scrollLeft -= maxScroll;
+                    void track.offsetWidth; // Forzar renderizado
+                    track.classList.add('scroll-smooth');
+                } else if (track.scrollLeft <= 0) {
+                    track.classList.remove('scroll-smooth');
+                    track.scrollLeft += maxScroll;
+                    void track.offsetWidth; 
+                    track.classList.add('scroll-smooth');
+                }
+            }, { passive: true });
+
+            // Pausar auto-scroll al interactuar
+            track.addEventListener('mouseenter', () => stopTimers(trackId));
+            track.addEventListener('mouseleave', () => startTimers(trackId));
+            track.addEventListener('touchstart', () => stopTimers(trackId), {passive: true});
+            track.addEventListener('touchend', () => startTimers(trackId), {passive: true});
+        }
+
+        function stopTimers(trackId) {
+            if (trackId === 'carouselTrack') clearInterval(carouselIntervalId);
+            if (trackId === 'hotelCarouselTrack') clearInterval(hotelCarouselIntervalId);
+        }
+        function startTimers(trackId) {
+            if (trackId === 'carouselTrack') startCarouselTimer();
+            if (trackId === 'hotelCarouselTrack') startHotelCarouselTimer();
         }
 
         function startCarouselTimer() {
             clearInterval(carouselIntervalId);
-            carouselIntervalId = setInterval(() => {
-                scrollCarousel(1);
-            }, 3000); 
+            carouselIntervalId = setInterval(() => scrollCarousel(1), 3000); 
         }
-
-        function scrollCarousel(direction) {
-            if (!carouselTrack) return;
-            const firstImg = carouselTrack.children[0];
-            const scrollAmount = firstImg.clientWidth + 24; 
-            
-            if (direction === 1) {
-                if (carouselTrack.scrollLeft + carouselTrack.clientWidth >= carouselTrack.scrollWidth - 10) {
-                    carouselTrack.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    carouselTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }
-            } else {
-                if (carouselTrack.scrollLeft <= 0) {
-                    carouselTrack.scrollTo({ left: carouselTrack.scrollWidth, behavior: 'smooth' });
-                } else {
-                    carouselTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                }
-            }
-        }
-
-        // --- LÓGICA DEL CARRUSEL DE HOTEL (BUCLE INFINITO) ---
-        let hotelCarouselIntervalId;
-
-        function initHotelCarouselAutoScroll() {
-            startHotelCarouselTimer();
-            const track = document.getElementById('hotelCarouselTrack');
-            if(track) {
-                track.addEventListener('mouseenter', () => clearInterval(hotelCarouselIntervalId));
-                track.addEventListener('mouseleave', startHotelCarouselTimer);
-                track.addEventListener('touchstart', () => clearInterval(hotelCarouselIntervalId), {passive: true});
-                track.addEventListener('touchend', startHotelCarouselTimer, {passive: true});
-            }
-        }
-
         function startHotelCarouselTimer() {
             clearInterval(hotelCarouselIntervalId);
-            hotelCarouselIntervalId = setInterval(() => {
-                scrollHotelCarousel(1);
-            }, 3500); // 3.5 segundos para que no choque visualmente con el otro
+            hotelCarouselIntervalId = setInterval(() => scrollHotelCarousel(1), 3500); 
         }
 
+        // Funciones conectadas a los botones de flecha de la landing
+        function scrollCarousel(direction) {
+            const track = document.getElementById('carouselTrack');
+            if (!track) return;
+            const itemWidth = track.children[0].clientWidth + 24; 
+            track.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+        }
+        
         function scrollHotelCarousel(direction) {
             const track = document.getElementById('hotelCarouselTrack');
             if (!track) return;
-            const firstImg = track.children[0];
-            const scrollAmount = firstImg.clientWidth + 16; 
+            const itemWidth = track.children[0].clientWidth + 16; 
+            track.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+        }
+
+        // --- LÓGICA DEL LIGHTBOX (VISOR DE FOTOS COMPLETO) ---
+        function openLightbox(src) {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImage');
+            img.src = src;
+            modal.classList.remove('hidden');
             
-            if (direction === 1) {
-                // Bucle infinito: Si llega al final, vuelve suavemente al inicio
-                if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-                    track.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }
-            } else {
-                if (track.scrollLeft <= 0) {
-                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
-                } else {
-                    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                }
-            }
+            // Pausar carruseles para que no se muevan de fondo
+            clearInterval(carouselIntervalId);
+            clearInterval(hotelCarouselIntervalId);
+
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                img.classList.remove('scale-95');
+                img.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeLightbox(e) {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImage');
+            modal.classList.add('opacity-0');
+            img.classList.remove('scale-100');
+            img.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                img.src = '';
+                // Reanudar carruseles
+                startCarouselTimer();
+                startHotelCarouselTimer();
+            }, 300);
         }
 
         // --- MODAL DE PRIVACIDAD ---
