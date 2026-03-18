@@ -125,6 +125,15 @@
             20% { left: 200%; }
             100% { left: 200%; } /* Pausa entre brillos */
         }
+
+        /* Previene que el celular intente arrastrar la foto (efecto fantasma/elástico) */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            -webkit-touch-callout: none;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased pb-20 md:pb-0 relative">
@@ -156,10 +165,10 @@
         </div>
     </header>
 
-    <section class="pt-20 pb-12 bg-white relative -mt-8 rounded-t-[40px] shadow-2xl px-4 sm:px-6 lg:px-8 z-20 reveal fade-up">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-extrabold mb-6 text-brand-dark">Qué incluye esta experiencia</h2>
-            <p class="text-lg text-gray-600 leading-relaxed mb-8 font-medium">
+    <section class="pt-16 pb-8 bg-white relative -mt-10 rounded-t-[40px] shadow-[0_-15px_40px_-15px_rgba(0,0,0,0.3)] px-4 sm:px-6 lg:px-8 z-30">
+        <div class="max-w-4xl mx-auto text-center reveal fade-up">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-brand-dark">Qué incluye esta experiencia</h2>
+            <p class="text-lg text-gray-600 leading-relaxed font-medium">
                 Descubre los puntos más representativos del Eje Cafetero: fincas históricas, miradores y experiencias con productores locales. El paquete reúne actividades seleccionadas pensadas para quien disfruta del paisaje, la gastronomía y la cultura cafetera.
             </p>
         </div>
@@ -167,7 +176,7 @@
 
     <section class="pb-20 bg-gradient-to-b from-white to-brand-light/50 overflow-hidden relative group">
         <div class="max-w-[100vw] mx-auto px-2 md:px-6">
-            <div id="carouselTrack" class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth pb-8 pt-4 px-4 cursor-grab active:cursor-grabbing">
+            <div id="carouselTrack" class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth pb-8 pt-4 px-4 cursor-grab active:cursor-grabbing touch-pan-y">
                 <div class="reveal fade-right delay-100 snap-center shrink-0 w-[85vw] md:w-[420px] h-[320px] relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 group-hover:shadow-xl transition-shadow">
                     <img src="https://i.ibb.co/nMckFsgw/PARQUE-DEL-CAFE.jpg" alt="Parque del Café" class="w-full h-full object-cover transition-transform duration-700 pointer-events-none hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-6 pointer-events-none">
@@ -404,7 +413,7 @@
             </div>
 
             <div class="mb-14 relative group">
-                <div id="hotelCarouselTrack" class="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth pb-6 pt-2 px-2 cursor-grab active:cursor-grabbing">
+                <div id="hotelCarouselTrack" class="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth pb-6 pt-2 px-2 cursor-grab active:cursor-grabbing touch-pan-y">
                     <div class="reveal fade-up snap-center shrink-0 w-[75vw] md:w-[320px] h-[220px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
                         <img src="https://i.ibb.co/tTFvvcys/fachada-1.jpg" alt="Hotel Foto 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none">
                     </div>
@@ -637,8 +646,9 @@
     </section>
 
     <footer class="bg-white text-gray-600 py-16 px-4 border-t border-gray-200 reveal fade-up">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div class="md:col-span-1">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12">
+            
+            <div class="col-span-2 md:col-span-1">
                 <h3 class="text-brand-dark text-2xl font-black mb-4"><span class="text-brand-cyan">Rutas</span> Viajeras</h3>
                 <p class="text-sm text-gray-500 leading-relaxed mb-6 font-medium">
                     Especialistas en crear experiencias inolvidables por toda Colombia, respaldados por Luisito El Viajero.
@@ -650,7 +660,7 @@
                 </div>
             </div>
             
-            <div>
+            <div class="col-span-1">
                 <h4 class="text-gray-800 font-bold mb-4 uppercase text-sm tracking-wider">Enlaces Rápidos</h4>
                 <ul class="space-y-3 text-sm font-medium">
                     <li><a href="#" onclick="scrollToPricing()" class="hover:text-brand-cyan transition">Ver Itinerario Eje Cafetero</a></li>
@@ -659,7 +669,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div class="col-span-1">
                 <h4 class="text-gray-800 font-bold mb-4 uppercase text-sm tracking-wider">Legal</h4>
                 <ul class="space-y-3 text-sm font-medium">
                     <li><a href="#" onclick="openPrivacyModal(event)" class="hover:text-brand-cyan transition">Política de Datos y Privacidad</a></li>
@@ -668,7 +678,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div class="col-span-2 md:col-span-1 md:mt-0">
                 <h4 class="text-gray-800 font-bold mb-4 uppercase text-sm tracking-wider">Contacto Seguro</h4>
                 <ul class="space-y-3 text-sm font-medium">
                     <li class="flex items-start group cursor-default">
@@ -856,10 +866,9 @@
                 }
             }, { passive: true });
 
+            // Pausar auto-scroll permanentemente al primer contacto o hover
             track.addEventListener('mouseenter', () => stopTimers(trackId));
-            track.addEventListener('mouseleave', () => startTimers(trackId));
             track.addEventListener('touchstart', () => stopTimers(trackId), {passive: true});
-            track.addEventListener('touchend', () => startTimers(trackId), {passive: true});
         }
 
         function stopTimers(trackId) {
@@ -881,6 +890,7 @@
         }
 
         function scrollCarousel(direction) {
+            stopTimers('carouselTrack'); // Pausa permanente al dar clic manual
             const track = document.getElementById('carouselTrack');
             if (!track) return;
             const itemWidth = track.children[0].clientWidth + 24; 
@@ -888,6 +898,7 @@
         }
         
         function scrollHotelCarousel(direction) {
+            stopTimers('hotelCarouselTrack'); // Pausa permanente al dar clic manual
             const track = document.getElementById('hotelCarouselTrack');
             if (!track) return;
             const itemWidth = track.children[0].clientWidth + 16; 
@@ -920,8 +931,6 @@
             setTimeout(() => {
                 modal.classList.add('hidden');
                 img.src = '';
-                startCarouselTimer();
-                startHotelCarouselTimer();
             }, 300);
         }
 
