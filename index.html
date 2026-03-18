@@ -220,14 +220,15 @@
                     <div class="mb-3 reveal fade-up">
                         <button onclick="toggleAccordion('day1')" class="w-full flex justify-between items-center bg-white hover:bg-brand-light border border-gray-100 shadow-sm py-5 px-6 rounded-2xl text-left font-bold text-gray-800 transition-all">
                             <span>Día 1 — 12 de mayo (Llegada)</span>
-                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day1" class="fas fa-minus text-brand-cyan"></i></div>
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200"><i id="icon-day1" class="fas fa-plus text-gray-400"></i></div>
                         </button>
-                        <div id="content-day1" class="px-2 pt-6 pb-6 transition-all">
+                        <div id="content-day1" class="hidden px-2 pt-6 pb-6 transition-all">
                             <div class="flex flex-col md:flex-row gap-6 items-start bg-white p-6 rounded-2xl shadow-sm border border-gray-50">
                                 <img src="img/bus.jpg" alt="Viaje y Llegada" class="w-full md:w-[280px] h-[220px] object-cover rounded-xl shadow-inner shrink-0">
                                 <div class="w-full pt-2">
                                     <div class="text-gray-600 space-y-3 text-[16px] leading-relaxed font-medium">
-                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Salida desde Barranquilla en transporte terrestre hacia el Quindío.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Salida desde Barranquilla en transporte terrestre ida y vuelta en bus.</p>
+                                        <p class="flex items-start"><i class="fas fa-check text-brand-cyan mt-1 mr-3"></i> Llegada, registro y acomodación en el Hotel campestre.</p>
                                     </div>
                                 </div>
                             </div>
@@ -444,44 +445,51 @@
                 </div>
             </div>
 
-            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-stretch">
-                <div class="lg:col-span-6 flex flex-col gap-6 reveal fade-right delay-200">
-                    <div class="bg-brand-light/50 border border-brand-cyan/20 p-8 rounded-3xl shadow-sm flex-grow flex flex-col justify-center">
-                        <ul class="space-y-6 text-gray-700 font-medium">
-                            <li class="flex items-center"><div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-xl"><i class="fas fa-leaf"></i></div> Hotel campestre rodeado de naturaleza</li>
-                            <li class="flex items-center"><div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-xl"><i class="fas fa-swimming-pool"></i></div> Piscina y jacuzzi para relajarte</li>
-                            <li class="flex items-center"><div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-xl"><i class="fas fa-utensils"></i></div> Restaurante dentro del hotel</li>
-                            <li class="flex items-center"><div class="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-xl"><i class="fas fa-map-marker-alt"></i></div> Ubicación estratégica en Montenegro, Quindío</li>
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-start">
+                
+                <div class="lg:col-span-6 flex flex-col gap-4 reveal fade-right delay-200">
+                    <div class="bg-brand-light/50 border border-brand-cyan/20 p-5 md:p-6 rounded-3xl shadow-sm">
+                        <ul class="space-y-4 text-gray-700 font-medium">
+                            <li class="flex items-center"><div class="w-10 h-10 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-lg"><i class="fas fa-leaf"></i></div> Hotel campestre rodeado de naturaleza</li>
+                            <li class="flex items-center"><div class="w-10 h-10 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-lg"><i class="fas fa-swimming-pool"></i></div> Piscina y jacuzzi para relajarte</li>
+                            <li class="flex items-center"><div class="w-10 h-10 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-lg"><i class="fas fa-utensils"></i></div> Restaurante dentro del hotel</li>
+                            <li class="flex items-center"><div class="w-10 h-10 shrink-0 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm text-brand-cyan text-lg"><i class="fas fa-map-marker-alt"></i></div> Ubicación estratégica en Filandia, Quindío</li>
                         </ul>
                     </div>
 
-                    <div class="bg-orange-50 border-l-4 border-orange-400 p-6 rounded-r-2xl shadow-sm">
+                    <div class="bg-orange-50 border-l-4 border-orange-400 p-5 rounded-r-2xl shadow-sm">
                         <p class="text-sm text-gray-700 font-medium leading-relaxed flex items-start">
-                            <i class="fas fa-info-circle text-orange-500 mt-1 mr-3 text-lg shrink-0"></i>
+                            <i class="fas fa-info-circle text-orange-500 mt-0.5 mr-3 text-lg shrink-0"></i>
                             <span><strong>Aclaración importante:</strong> Las habitaciones durante este viaje grupal serán compartidas entre viajeros del grupo, creando un ambiente social y de comunidad durante la experiencia.</span>
                         </p>
                     </div>
+
+                    <div class="hidden lg:block mt-2 rounded-3xl overflow-hidden shadow-sm relative h-[250px] group border border-gray-100">
+                        <img src="img/hotel.jpg" alt="Piscina del Hotel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                            <span class="text-white font-bold text-xl drop-shadow-md tracking-wide"><i class="fas fa-moon mr-2 text-brand-cyan"></i> Descanso garantizado</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="lg:col-span-6 mt-10 lg:mt-0 flex flex-col gap-6 reveal fade-left delay-300">
-                    <div class="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm flex-grow flex flex-col">
-                        <h3 class="text-xl font-extrabold text-brand-dark mb-6 text-center">Conoce el lugar donde descansaremos</h3>
+                <div class="lg:col-span-6 mt-8 lg:mt-0 flex flex-col reveal fade-left delay-300">
+                    <div class="bg-white border border-gray-100 p-5 md:p-6 rounded-3xl shadow-sm">
+                        <h3 class="text-xl font-extrabold text-brand-dark mb-4 text-center">Conoce el lugar donde descansaremos</h3>
                         
-                        <div class="w-full max-w-[320px] mx-auto relative rounded-2xl overflow-hidden shadow-inner bg-gray-900 mb-6 aspect-[9/16]">
+                        <div class="w-full max-w-[280px] mx-auto relative rounded-2xl overflow-hidden shadow-inner bg-gray-900 mb-4 aspect-[9/16]">
                             <video class="absolute top-0 left-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="https://i.ibb.co/tTFvvcys/fachada-1.jpg">
                                 <source src="video prom.mp4#t=0.011" type="video/mp4">
                                 Tu navegador no soporta la etiqueta de video.
                             </video>
                         </div>
 
-                        <div class="mt-auto text-center px-4 py-5 bg-gray-50 rounded-2xl border border-gray-100">
-                            <p class="text-gray-600 italic font-medium">"Después de cada día explorando el Eje Cafetero, este será el lugar perfecto para relajarte, compartir con el grupo y disfrutar del entorno natural."</p>
+                        <div class="text-center px-4 py-4 bg-gray-50 rounded-2xl border border-gray-100">
+                            <p class="text-sm text-gray-600 italic font-medium">"Después de cada día explorando el Eje Cafetero, este será el lugar perfecto para relajarte, compartir con el grupo y disfrutar del entorno natural."</p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
     </section>
 
     <section class="py-20 bg-gray-50 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="tarifas">
@@ -953,7 +961,23 @@
             }
         }
 
+        // --- LÓGICA DE ACORDEÓN (ITINERARIO ESTRICTO) ---
         function toggleAccordion(id) {
+            // 1. Cerramos todos los días primero (excepto el que acabamos de tocar)
+            const allDays = ['day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'day7'];
+            allDays.forEach(dayId => {
+                if (dayId !== id) {
+                    const otherContent = document.getElementById('content-' + dayId);
+                    const otherIcon = document.getElementById('icon-' + dayId);
+                    if (otherContent && !otherContent.classList.contains('hidden')) {
+                        otherContent.classList.add('hidden');
+                        otherIcon.classList.remove('fa-minus', 'text-brand-cyan');
+                        otherIcon.classList.add('fa-plus', 'text-gray-400');
+                    }
+                }
+            });
+
+            // 2. Abrimos o cerramos el día al que se le dio clic
             const content = document.getElementById('content-' + id);
             const icon = document.getElementById('icon-' + id);
             if (content.classList.contains('hidden')) {
