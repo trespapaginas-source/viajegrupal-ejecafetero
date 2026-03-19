@@ -151,6 +151,32 @@
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }   
     </style>
+
+    .btn-whatsapp-pulse:hover {
+            animation: none;
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }   
+    </style>
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '838345629291626');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=838345629291626&ev=PageView&noscript=1"
+    /></noscript>
+    </head>
+<body class="bg-gray-50 text-gray-800 antialiased pb-20 md:pb-0 relative">
+    
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased pb-20 md:pb-0 relative">
 
@@ -1328,88 +1354,21 @@
             }
         }
 
-        async function submitBookingToAppsScript() {
+        function submitBookingToAppsScript() {
+            // Ya los datos están a salvo en Supabase. 
+            // Aquí solo hacemos el efecto de carga y abrimos WhatsApp.
             const btn = document.getElementById('btnFinalizarWs');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Asegurando tu cupo... ✈️';
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Abriendo WhatsApp... ✈️';
             btn.disabled = true;
 
-            // --- DEFENSA CONTRA BOTS ---
-            if (bookingState.isBot) {
-                setTimeout(() => {
-                    let expiryTime = Date.now() + (60 * 60 * 1000);
-                    localStorage.setItem('retentionExpiry', expiryTime);
-                    bookingState.step = 4;
-                    renderStep();
-                }, 1500);
-                return; 
-            }
-
-            const buyer = bookingState.passengers[0];
-            const subtotal = DEPOSIT_PRICE * bookingState.numSpots;
-            const tarifaTotal = 1800000 * bookingState.numSpots;
-
-            const urlParams = new URLSearchParams(window.location.search);
-
-            const payload = {
-                fecha_registro: new Date().toLocaleDateString('es-CO'),
-                nombre: buyer.nombre,       // YA VAN SEPARADOS DIRECTAMENTE
-                apellido: buyer.apellido,   // YA VAN SEPARADOS DIRECTAMENTE
-                documento: buyer.documento || "N/A",
-                telefono: buyer.phone,
-                email: buyer.email,
-                ciudad: buyer.ciudad || "N/A",
-                
-                plan_seleccionado: "Viaje Eje Cafetero 12-18 Mayo 2026",
-                tarifa_total: tarifaTotal,
-                abono: subtotal,
-                pax: bookingState.numSpots,
-                alergias: buyer.alergias || "Ninguna",
-                requerimientos: buyer.requerimientos || "Ninguno",
-                contacto_emergencia: buyer.contacto_emergencia || "N/A",
-
-                utm_source: urlParams.get('utm_source') || 'organico_o_directo',
-                utm_medium: urlParams.get('utm_medium') || 'N/A',
-                utm_campaign: urlParams.get('utm_campaign') || 'N/A',
-                utm_term: urlParams.get('utm_term') || 'N/A',
-                utm_content: urlParams.get('utm_content') || 'N/A'
-            };
-
-            try {
-                // USAMOS getUrl() OFUSCADO
-                const response = await fetch(getUrl(), {
-                    method: 'POST',
-                    body: JSON.stringify(payload),
-                    headers: { 'Content-Type': 'application/json' }
-                });
-
-                let data;
-                try {
-                    data = await response.json();
-                } catch(e) {
-                    console.log("Asumiendo guardado correcto.");
-                    data = { retention_expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString() };
-                }
-
-                let expiryTime = data && data.retention_expires_at ? new Date(data.retention_expires_at).getTime() : Date.now() + (60 * 60 * 1000);
-                
-                localStorage.setItem('retentionExpiry', expiryTime);
-                localStorage.setItem('bookingData', JSON.stringify({
-                    numSpots: bookingState.numSpots,
-                    passengers: bookingState.passengers,
-                    timestamp: Date.now()
-                }));
-
+            setTimeout(() => {
+                // Pasamos al Paso 4 (Reloj de cuenta regresiva)
                 bookingState.step = 4;
                 renderStep();
+                // Abrimos la app de WhatsApp
                 reopenWhatsApp();
-
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Ocurrió un error de conexión. Intenta nuevamente.");
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
+            }, 800);
         }
 
         function updateSpots(change) {
@@ -1433,13 +1392,19 @@
             renderStep();
         }
 
-        function savePassenger(e) {
+        async function savePassenger(e) {
             e.preventDefault();
             
+            // 1. Cambiamos el botón a estado de "Cargando"
+            const btnSubmit = e.target.querySelector('button[type="submit"]');
+            const originalText = btnSubmit.innerHTML;
+            btnSubmit.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Asegurando cupo...';
+            btnSubmit.disabled = true;
+
             const hp = document.getElementById('hp_website');
             if (hp && hp.value !== '') { bookingState.isBot = true; }
 
-            // Recogemos Nombre y Apellido independientes
+            // 2. Recogemos los datos del formulario
             const nombre = document.getElementById('p_nombre').value.trim();
             const apellido = document.getElementById('p_apellido').value.trim();
             const email = document.getElementById('p_email').value;
@@ -1450,13 +1415,80 @@
             const requerimientos = document.getElementById('p_requerimientos').value;
             const contacto_emergencia = document.getElementById('p_contacto_emergencia').value;
 
-            // Guardamos todo
+            // Guardamos localmente en la memoria
             bookingState.passengers[0] = { 
                 nombre, apellido, email, phone, documento, ciudad, alergias, requerimientos, contacto_emergencia 
             };
 
-            bookingState.step = 3;
-            renderStep();
+            // --- 3. ENVÍO SILENCIOSO A MAKE Y SUPABASE ---
+            if (bookingState.isBot) {
+                setTimeout(() => { bookingState.step = 3; renderStep(); }, 1500);
+                return;
+            }
+
+            const buyer = bookingState.passengers[0];
+            const subtotal = DEPOSIT_PRICE * bookingState.numSpots;
+            const tarifaTotal = 1800000 * bookingState.numSpots;
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Armamos el paquete de datos (Incluyendo el UUID de tu plan)
+            const payload = {
+                fecha_registro: new Date().toLocaleDateString('es-CO'),
+                nombre: buyer.nombre,       
+                apellido: buyer.apellido,   
+                documento: buyer.documento || "N/A",
+                telefono: buyer.phone,
+                email: buyer.email,
+                ciudad: buyer.ciudad || "N/A",
+                
+                plan_seleccionado: "Viaje Eje Cafetero 12-18 Mayo 2026",
+                plan_id_supabase: "731f0c92-35a4-4a9c-8586-eff8499436a1", // UUID de tu CRM  
+                tarifa_total: tarifaTotal,
+                abono: subtotal,
+                pax: bookingState.numSpots,
+                alergias: buyer.alergias || "Ninguna",
+                requerimientos: buyer.requerimientos || "Ninguno",
+                contacto_emergencia: buyer.contacto_emergencia || "N/A",
+
+                utm_source: urlParams.get('utm_source') || 'organico_o_directo',
+                utm_medium: urlParams.get('utm_medium') || 'N/A',
+                utm_campaign: urlParams.get('utm_campaign') || 'N/A',
+                utm_term: urlParams.get('utm_term') || 'N/A',
+                utm_content: urlParams.get('utm_content') || 'N/A'
+            };
+
+            try {
+                // Disparamos los datos hacia Make.com
+                const response = await fetch(getUrl(), {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                // --- DISPARO DEL PIXEL DE FACEBOOK (LEAD) ---
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead');
+                    }
+
+                // Preparamos el tiempo de expiración (1 hora)
+                let expiryTime = Date.now() + (60 * 60 * 1000);
+                localStorage.setItem('retentionExpiry', expiryTime);
+                localStorage.setItem('bookingData', JSON.stringify({
+                    numSpots: bookingState.numSpots,
+                    passengers: bookingState.passengers,
+                    timestamp: Date.now()
+                }));
+
+                // ¡Éxito! Pasamos al Paso 3 (El Voucher y botón de WhatsApp)
+                bookingState.step = 3;
+                renderStep();
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Ocurrió un error de conexión. Revisa tu internet e intenta nuevamente.");
+                btnSubmit.innerHTML = originalText;
+                btnSubmit.disabled = false;
+            }
         }
 
         function generateWhatsAppText() {
