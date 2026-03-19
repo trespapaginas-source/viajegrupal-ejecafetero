@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Viaja al Eje Cafetero | 21 al 28 de Mayo 2026</title>
-    <link rel="preload" as="image" href="https://i.ibb.co/0ygBNsVq/PORTADA-HERO.jpg">
+    <link rel="preload" as="image" href="img/hero_portada_final (2).jpg">
     <meta name="description" content="Descubre el Eje Cafetero. 7 días y 6 noches entre fincas, degustaciones y paisajes inolvidables.">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,14 +30,15 @@
         }
     </script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         
         /* Overlay más sutil y elegante para el Hero */
         .hero-bg {
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://i.ibb.co/0ygBNsVq/PORTADA-HERO.jpg');
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('img/hero_portada_final (2).jpg');
             background-size: cover;
             background-position: center;
         }
@@ -151,6 +152,9 @@
             transform: scale(1.03);
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }   
+
+        /* Evita el zoom al tocar rápido los botones en móviles */
+        .no-zoom-btn { touch-action: manipulation; }
     </style>
 
     <script>
@@ -242,8 +246,8 @@
                 </div>
             </div>
             <div class="flex justify-center gap-4 mt-2 reveal fade-up">
-                <button onclick="scrollCarousel(-1)" class="w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-left text-lg"></i></button>
-                <button onclick="scrollCarousel(1)" class="w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-right text-lg"></i></button>
+                <button onclick="scrollCarousel(-1)" class="no-zoom-btn w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-left text-lg"></i></button>
+                <button onclick="scrollCarousel(1)" class="no-zoom-btn w-12 h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-right text-lg"></i></button>
             </div>
         </div>
     </section>
@@ -453,42 +457,42 @@
             <div class="mb-10 relative group">
                 <div id="hotelCarouselTrack" class="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth pb-4 pt-2 px-2 cursor-grab active:cursor-grabbing touch-pan-y">
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/tTFvvcys/fachada-1.jpg" alt="Hotel Foto 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/fachada aerea.webp" alt="Hotel Foto 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/j9TT7M7z/Save-Clip-App-626708194-18120631477571680-6446293681005084048-n.jpg" alt="Hotel Foto 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/caballos.webp" alt="Hotel Foto 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/d3fFgHC/fachada-2.jpg" alt="Hotel Foto 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/fachada 1.webp" alt="Hotel Foto 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/cSNPWJrd/0be34844-5b9b-4d29-a6f3-52238241a63a.jpg" alt="Hotel Foto 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/fachada 3.webp" alt="Hotel Foto 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/v45LHTvh/02ee222d-83df-4b9d-bb93-fe605416c173.jpg" alt="Hotel Foto 5" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/fogotas.webp" alt="Hotel Foto 5" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/Jj14zmHQ/3dce76cd-15c9-4925-b3cb-d6f1fb81f33a.jpg" alt="Hotel Foto 6" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/habitaciones.webp" alt="Hotel Foto 6" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/ks3CTSLK/5f1be086-961b-493f-bbf1-2d0e60814c56.jpg" alt="Hotel Foto 7" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/la victoria letrero.webp" alt="Hotel Foto 7" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/7dPjdWSB/piscina-2.jpg" alt="Hotel Foto 8" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/hb2.webp" alt="Hotel Foto 8" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/jkxk1YRq/habitaciones.jpg" alt="Hotel Foto 9" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/piscina modelos.webp" alt="Hotel Foto 9" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/VWLQXPr9/0322a6a4-c61b-459d-86e7-2b212ace06f3.jpg" alt="Hotel Foto 10" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/parque.jpg" alt="Hotel Foto 10" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                     <div class="snap-center shrink-0 w-[85vw] md:w-[384px] h-[260px] md:h-[280px] relative rounded-3xl overflow-hidden shadow-md border border-gray-100 transition-transform duration-500 hover:shadow-xl">
-                        <img src="https://i.ibb.co/cKV15b2s/Save-Clip-App-618089019-18070220972147997-1530941264181902851-n.jpg" alt="Hotel Foto 11" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <img src="img/piscina (2).jpg" alt="Hotel Foto 11" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 pointer-events-none">
                     </div>
                 </div>
                 <div class="flex justify-center gap-4 mt-2 reveal fade-up">
-                    <button onclick="scrollHotelCarousel(-1)" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-left text-base md:text-lg"></i></button>
-                    <button onclick="scrollHotelCarousel(1)" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-right text-base md:text-lg"></i></button>
+                    <button onclick="scrollHotelCarousel(-1)" class="no-zoom-btn w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-left text-base md:text-lg"></i></button>
+                    <button onclick="scrollHotelCarousel(1)" class="no-zoom-btn w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center text-gray-500 hover:text-brand-cyan hover:border-brand-cyan hover:shadow-md transition-all"><i class="fas fa-chevron-right text-base md:text-lg"></i></button>
                 </div>
             </div>
 
@@ -587,7 +591,7 @@
 
                 <div class="hidden lg:flex w-full lg:w-6/12 flex-col gap-8 reveal fade-left delay-300 pt-2">
                     <div class="relative h-72 rounded-3xl overflow-hidden shadow-2xl group border border-gray-200">
-                        <img src="https://i.ibb.co/Vc6w9cFR/SALENTO-Y-FILANDIA.jpg" alt="Eje Cafetero Premium" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <img src="img/salento-y-filandia.jpg" alt="Eje Cafetero Premium" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
                             <span class="text-white font-black text-3xl drop-shadow-lg tracking-wide">Una experiencia a otro nivel</span>
                             <span class="text-brand-cyan font-bold text-lg mt-2 flex items-center"><i class="fas fa-check-circle mr-2"></i> Cupos limitados</span>
@@ -683,7 +687,7 @@
         </div>
     </section>
 
-    <footer class="bg-white text-gray-600 py-16 px-4 border-t border-gray-200 reveal fade-up">
+    <footer class="bg-white text-gray-600 pt-16 pb-4 md:pb-8 px-4 border-t border-gray-200 reveal fade-up">
         <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12">
             
             <div class="col-span-2 md:col-span-1">
@@ -736,12 +740,7 @@
                     
                     <li class="flex items-center group cursor-default">
                         <div class="w-7 shrink-0 flex justify-center mt-0.5"><i class="fab fa-whatsapp text-brand-cyan text-base md:text-lg group-hover:scale-110 transition"></i></div>
-                        <span class="leading-relaxed">+57 320 934 4964</span>
-                    </li>
-                    
-                    <li class="flex items-center group cursor-default">
-                        <div class="w-7 shrink-0 flex justify-center mt-0.5"><i class="fas fa-envelope text-brand-cyan text-base md:text-lg group-hover:scale-110 transition"></i></div>
-                        <span class="break-all leading-relaxed">vivemarketingdigital@outlook.com</span>
+                        <span class="leading-relaxed">3209344964</span>
                     </li>
                     
                     <li class="flex items-center group cursor-default mt-5"> <div class="w-7 shrink-0 flex justify-center mt-0.5"><i class="fas fa-shield-alt text-brand-cyan text-base md:text-lg group-hover:scale-110 transition"></i></div>
@@ -751,6 +750,7 @@
                 </ul>
             </div>
         </div>
+
         <div class="max-w-7xl mx-auto border-t border-gray-100 pt-6 md:pt-8 text-center px-4">
                 <div class="flex items-center justify-center mb-3 md:mb-4 text-brand-cyan">
                     <i class="fas fa-lock mr-2 text-lg md:text-xl"></i>
@@ -889,8 +889,8 @@
         window.isDraggingCarousel = false; 
         
         function initCarousels() {
-            setupInfiniteTrack('carouselTrack');
-            setupInfiniteTrack('hotelCarouselTrack');
+            setupSafeTrack('carouselTrack');
+            setupSafeTrack('hotelCarouselTrack');
             
             startCarouselTimer();
             startHotelCarouselTimer();
@@ -907,34 +907,15 @@
             });
         }
 
-        function setupInfiniteTrack(trackId) {
+        function setupSafeTrack(trackId) {
             const track = document.getElementById(trackId);
             if (!track) return;
 
-            const items = Array.from(track.children);
-            
-            items.forEach(item => {
-                const clone = item.cloneNode(true);
-                clone.classList.remove('reveal', 'fade-up', 'fade-right', 'fade-left', 'active');
-                clone.style.opacity = '1';
-                clone.style.transform = 'translate(0,0)';
-                track.appendChild(clone);
-            });
-
+            // Detectamos si el usuario está arrastrando con el dedo
             track.addEventListener('touchmove', () => { window.isDraggingCarousel = true; }, {passive: true});
             track.addEventListener('touchend', () => { setTimeout(() => window.isDraggingCarousel = false, 150); }, {passive: true});
 
-            track.addEventListener('scroll', () => {
-                const maxScroll = track.scrollWidth / 2; 
-                
-                if (track.scrollLeft >= maxScroll) {
-                    track.classList.remove('scroll-smooth', 'snap-x');
-                    track.scrollLeft -= maxScroll; 
-                    void track.offsetWidth; 
-                    track.classList.add('scroll-smooth', 'snap-x'); 
-                }
-            }, { passive: true });
-
+            // Pausar auto-play si el usuario interactúa
             track.addEventListener('mouseenter', () => stopTimers(trackId));
             track.addEventListener('mouseleave', () => startTimers(trackId));
             track.addEventListener('touchstart', () => stopTimers(trackId), {passive: true});
@@ -952,27 +933,49 @@
 
         function startCarouselTimer() {
             clearInterval(carouselIntervalId);
-            carouselIntervalId = setInterval(() => scrollCarousel(1), 3000); 
+            carouselIntervalId = setInterval(() => scrollCarousel(1), 3500); 
         }
         function startHotelCarouselTimer() {
             clearInterval(hotelCarouselIntervalId);
-            hotelCarouselIntervalId = setInterval(() => scrollHotelCarousel(1), 3500); 
+            hotelCarouselIntervalId = setInterval(() => scrollHotelCarousel(1), 4000); 
         }
 
         function scrollCarousel(direction) {
-            stopTimers('carouselTrack'); // Pausa permanente al dar clic manual
+            stopTimers('carouselTrack'); // Pausar automático al tocar botones
             const track = document.getElementById('carouselTrack');
             if (!track) return;
-            const itemWidth = track.children[0].clientWidth + 24; 
-            track.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+            
+            const gap = 24; // Espaciado del primer carrusel
+            const itemWidth = track.children[0].offsetWidth + gap;
+            
+            // Calculamos exactamente qué foto está en el centro
+            let currentIndex = Math.round(track.scrollLeft / itemWidth);
+            let nextIndex = currentIndex + direction;
+            
+            // Control de topes sin pantallas en blanco
+            const maxIndex = track.children.length - 1;
+            if (nextIndex < 0) nextIndex = maxIndex; // Si da atrás en la primera, va a la última
+            if (nextIndex > maxIndex) nextIndex = 0; // Si da adelante en la última, vuelve a la primera
+
+            track.scrollTo({ left: nextIndex * itemWidth, behavior: 'smooth' });
         }
         
         function scrollHotelCarousel(direction) {
-            stopTimers('hotelCarouselTrack'); // Pausa permanente al dar clic manual
+            stopTimers('hotelCarouselTrack');
             const track = document.getElementById('hotelCarouselTrack');
             if (!track) return;
-            const itemWidth = track.children[0].clientWidth + 16; 
-            track.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+            
+            const gap = 16; // Espaciado del carrusel del hotel
+            const itemWidth = track.children[0].offsetWidth + gap;
+            
+            let currentIndex = Math.round(track.scrollLeft / itemWidth);
+            let nextIndex = currentIndex + direction;
+            
+            const maxIndex = track.children.length - 1;
+            if (nextIndex < 0) nextIndex = maxIndex;
+            if (nextIndex > maxIndex) nextIndex = 0;
+
+            track.scrollTo({ left: nextIndex * itemWidth, behavior: 'smooth' });
         }
 
         function openLightbox(src) {
