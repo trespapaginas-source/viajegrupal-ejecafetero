@@ -686,34 +686,61 @@
     </div>
 
     <script src="js/main.js" defer></script>
+            
             <style>
         @keyframes heartbeatFloat {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
-        .animate-whatsapp-float {
+        .whatsapp-btn-container {
+            position: fixed;
+            right: 24px;
+            bottom: 24px; /* Posición en PC (Abajo a la derecha) */
+            z-index: 99999; /* Por encima de absolutamente todo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            color: white !important;
+            border-radius: 50%;
+            transition: all 0.3s ease;
             animation: heartbeatFloat 2s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
-            /* Gradiente verde vibrante dopamínico */
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            text-decoration: none;
         }
-        /* Efecto de agrandado al pasar el mouse o tocarlo */
-        .animate-whatsapp-float:hover {
+        .whatsapp-btn-container:hover {
             transform: scale(1.1) translateY(-5px) !important;
-            animation: none; /* Detiene el latido al interactuar */
+            animation: none; /* Detiene el latido si le pasan el mouse */
             box-shadow: 0 15px 30px rgba(18, 140, 126, 0.4);
+        }
+        
+        /* ========================================================= */
+        /* MAGIA PARA CELULARES (Esquiva la barra de "Asegura cupo") */
+        /* ========================================================= */
+        @media (max-width: 767px) {
+            .whatsapp-btn-container {
+                bottom: 95px !important; /* Lo subimos para que flote SOBRE la barra */
+                right: 16px;
+                width: 58px;
+                height: 58px;
+            }
+            .whatsapp-btn-container i {
+                font-size: 32px !important; /* Icono un poco más ajustado */
+            }
         }
     </style>
 
     <a href="https://wa.me/573332555034?text=¡Hola!%20☀️%20Vengo%20desde%20la%20landing%20page%20y%20quiero%20información%20inmediata%20del%20viaje%20al%20Eje%20Cafetero%20☕✈️"
        target="_blank"
        rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-[999] flex items-center justify-center w-16 h-16 text-white rounded-full shadow-2xl transition-all duration-300 no-zoom-btn animate-whatsapp-float group"
+       class="whatsapp-btn-container group no-zoom-btn"
        aria-label="Contactar por WhatsApp inmediatamente">
        
-        <i class="fab fa-whatsapp text-4xl"></i>
+        <i class="fab fa-whatsapp" style="font-size: 38px;"></i>
 
-        <span class="absolute right-full mr-4 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg">
+        <span class="absolute right-full mr-4 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg hidden md:block">
             ¿Dudas? ¡Escríbenos YA! ⚡
         </span>
     </a>
