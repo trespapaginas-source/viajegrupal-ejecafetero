@@ -251,6 +251,13 @@
             }
         }
 
+// --- FUNCIONALIDAD DEL BOTÓN ATRÁS (PASO 2 -> PASO 1) ---
+function goBackFromStep2() {
+    bookingState.step = 1;
+    renderStep();
+}
+// --------------------------------------------------------
+
         function renderStep() {
             bookingBody.innerHTML = ''; 
             
