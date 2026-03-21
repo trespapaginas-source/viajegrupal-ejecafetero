@@ -548,7 +548,7 @@ function goBackFromStep2() {
                 email: buyer.email,
                 ciudad: buyer.ciudad || "N/A",
                 
-                plan_seleccionado: "Viaje Eje Cafetero 21-28 Mayo 2026",
+                plan_seleccionado: "Viaje Eje Cafetero 12-18 Mayo 2026",
                 plan_id_supabase: "731f0c92-35a4-4a9c-8586-eff8499436a1", // UUID de tu CRM  
                 tarifa_total: tarifaTotal,
                 abono: subtotal,
@@ -602,7 +602,7 @@ function goBackFromStep2() {
             const total = formatCurrency(DEPOSIT_PRICE * bookingState.numSpots);
             const buyer = bookingState.passengers[0];
             
-            let text = `¡Hola, buenos días! ☀️ Quisiera asegurar mi reserva para el viaje al Eje Cafetero (21–28 de mayo 2026) ☕✈️\n\n`;
+            let text = `¡Hola, buenos días! ☀️ Quisiera asegurar mi reserva para el viaje al Eje Cafetero (12–18 de mayo 2026) ☕✈️\n\n`;
             text += `*Mis datos de registro:*\n`;
             text += `👤 *Nombre:* ${buyer.nombre} ${buyer.apellido}\n`;
             text += `🪪 *Cédula:* ${buyer.documento}\n`;
